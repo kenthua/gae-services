@@ -1,0 +1,41 @@
+= Google App Engine multiple services example
+
+== Prereq
+gcp project
+gcloud
+
+== Services
+* default - says hello world main and calls service3 - python3/flex
+* service1 - says hello world service1 - python3/flex
+* service2 - says hello world service2 - python3/flex
+* service3 - says hello world, calls service 1 and service 2 - python2/standard
+
+== Deployment
+
+Using Container Builder
+
+NOTE: You will need to give `[YOUR-PROJECT-ID]@cloudbuild.gserviceaccount.com` the App Engine Admin role.  App Engine Deployer does not have permissions to change traffic splits.  Deployment can take upwards of 30min.  
+
+[source,bash]
+----
+gcloud container builds submit . --timeout 1h --config cb.yaml
+----
+
+Manually deploying each
+[source,bash]
+----
+gcloud app deploy --quiet
+gcloud app deploy service1/service1.yaml
+gcloud app deploy service2/service2.yaml
+gcloud app deploy service3/service3.yaml
+----
+
+== Testing
+
+Test the different URLs
+
+Main
+https://[YOUR-PROJECT-ID].appspot.com
+
+Service 3
+https://service3-dot-[YOUR-PROJECT-ID].appspot.com

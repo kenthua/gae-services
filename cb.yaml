@@ -1,0 +1,9 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'service1/service1.yaml']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'service2/service2.yaml']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'service3/service3.yaml']
