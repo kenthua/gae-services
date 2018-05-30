@@ -7,7 +7,7 @@
 == Services
 * default - says hello world main and calls service3 - python3/flex
 * service1 - says hello world service1 - python3/flex
-* service2 - says hello world service2 - python3/flex
+* service2 - says hello world service2 - python2/standard
 * service3 - says hello world, calls service 1 and service 2 - python2/standard
 
 == Deployment
