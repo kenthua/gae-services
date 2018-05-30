@@ -1,7 +1,7 @@
 = Google App Engine multiple services example
 
 == Prereq
-gcp project
+gcp project 
 gcloud
 
 == Services
@@ -34,8 +34,11 @@ gcloud app deploy service3/service3.yaml
 
 Test the different URLs
 
-Main
+[source,bash]
+----
+# Main
 https://[YOUR-PROJECT-ID].appspot.com
 
-Service 3
+# Service 3
 https://service3-dot-[YOUR-PROJECT-ID].appspot.com
+----
