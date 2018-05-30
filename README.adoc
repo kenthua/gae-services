@@ -12,7 +12,7 @@
 
 == Deployment
 
-Using Container Builder
+=== Using Container Builder
 
 NOTE: You will need to give `[YOUR-PROJECT-ID]@cloudbuild.gserviceaccount.com` the App Engine Admin role.  App Engine Deployer does not have permissions to change traffic splits.  Deployment can take upwards of 30min.  
 
@@ -21,7 +21,7 @@ NOTE: You will need to give `[YOUR-PROJECT-ID]@cloudbuild.gserviceaccount.com` t
 gcloud container builds submit . --timeout 1h --config cb.yaml
 ----
 
-Manually deploying each
+=== Manually deploying each
 [source,bash]
 ----
 gcloud app deploy --quiet
