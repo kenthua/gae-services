@@ -15,9 +15,14 @@
 import webapp2
 import urllib2
 import os
+import logging
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
+        logging.info('INFO: service3')
+        logging.debug('DEBUG: service3')
+        logging.warning('WARNING: service3')
+
         res1 = urllib2.urlopen('https://' + os.environ['SERVICE1'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE1'])
         html1 = res1.read()
         res2 = urllib2.urlopen('https://' + os.environ['SERVICE2'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE2'])

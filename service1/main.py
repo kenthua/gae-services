@@ -14,6 +14,7 @@
 
 # [START app]
 import logging
+import google.cloud.logging
 
 from flask import Flask
 
@@ -24,6 +25,14 @@ app = Flask(__name__)
 @app.route('/service1')
 def hello():
     """Return a friendly HTTP greeting."""
+    client = google.cloud.logging.Client()
+    client.setup_logging()
+
+    logging.debug('DEBUG: service1')
+    logging.info('INFO: service1')
+    logging.warning('WARNING: service1')
+    logging.error('ERROR: service1')
+
     return 'Hello World - service1!'
 
 
