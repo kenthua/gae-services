@@ -25,6 +25,10 @@ app = Flask(__name__)
 @app.route('/service1')
 def hello():
     """Return a friendly HTTP greeting."""
+
+    # this is using the google cloud logging handler
+    # if a client is not setup, it will log warn & error events to resource.type=gae_app
+    # all other messages such as info & debug events go to resrouce.type=global
     client = google.cloud.logging.Client()
     client.setup_logging()
 
