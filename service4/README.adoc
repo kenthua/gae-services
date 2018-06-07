@@ -1,0 +1,12 @@
+= Writes to a GCS Bucket from GAE Flex
+
+=== Modify the following variables
+File: `service4.yaml`
+
+[source,bash]
+----
+env_variables:
+  GCS_BUCKET: gae-test-bucket
+  FILE_PREFIX: my-file
+  FILE_CONTENTS: text
+----

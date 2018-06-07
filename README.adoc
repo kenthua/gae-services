@@ -9,6 +9,7 @@
 * service1 - says hello world service1 - python3/flex
 * service2 - says hello world service2 - python2/standard
 * service3 - says hello world, calls service 1 and service 2 - python2/standard
+* service4 - standalone service writes a file to a bucket
 
 == Deployment
 
