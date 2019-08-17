@@ -16,6 +16,7 @@ import webapp2
 import urllib2
 import os
 import logging
+from google.appengine.api import urlfetch
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
@@ -23,16 +24,23 @@ class MainPage(webapp2.RequestHandler):
         logging.debug('DEBUG: service3')
         logging.warning('WARNING: service3')
 
-        res1 = urllib2.urlopen('https://' + os.environ['SERVICE1'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE1'])
-        html1 = res1.read()
-        res2 = urllib2.urlopen('https://' + os.environ['SERVICE2'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE2'])
-        html2 = res2.read()
+        #res1 = urllib2.urlopen('https://' + os.environ['SERVICE1'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE1'])
+        #html1 = res1.read()
+        #res2 = urllib2.urlopen('https://' + os.environ['SERVICE2'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE2'])
+        #html2 = res2.read()
+        url1a = 'https://' + os.environ['SERVICE1'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE1']
+        result1a = urlfetch.fetch(url1a)
+        html1a = result1a.content
+        url2a = 'https://' + os.environ['SERVICE2'] + '-dot-' + os.environ['DEFAULT_VERSION_HOSTNAME'] + '/' + os.environ['SERVICE2']
+        result2a = urlfetch.fetch(url2a)
+        html2a = result2a.content
+
         self.response.headers['Content-Type'] = 'text/plain'
         self.response.write('Hello, World! - service3')
         self.response.write('\n')
-        self.response.write(html1)
+        self.response.write(html1a)
         self.response.write('\n')
-        self.response.write(html2)
+        self.response.write(html2a)
         self.response.write('\n')
         self.response.write('service3 environment variables')
         self.response.write(os.environ)
